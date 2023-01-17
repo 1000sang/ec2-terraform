@@ -1,0 +1,1 @@
+https://www.notion.so/devfloors/ec2-terraform-843f38daff9b46fd9acaf1ee0c414f0d
