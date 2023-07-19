@@ -12,17 +12,17 @@ resource "aws_security_group" "this" {
   #   to_port     = "22"
   # }
 
-  # ingress {
-  #   cidr_blocks = ["0.0.0.0/0"]
-  #   description = "ingress security_group_rule for passport"
-  #   from_port   = "443"
-  #   protocol    = "tcp"
-  #   self        = "false"
-  #   to_port     = "443"
-  # }
+  ingress {
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "ingress security_group_rule for https api server"
+    from_port   = "443"
+    protocol    = "tcp"
+    self        = "false"
+    to_port     = "3000"
+  }
 
   ingress {
-    security_groups = [local.lb_sg_id]
+    cidr_blocks = ["0.0.0.0/0"]
     description = "ingress security_group_rule for api server"
     from_port   = "3000"
     protocol    = "tcp"
@@ -31,7 +31,7 @@ resource "aws_security_group" "this" {
   }
 
   ingress {
-    security_groups = [local.lb_sg_id]
+    cidr_blocks = ["0.0.0.0/0"]
     description = "ingress security_group_rule for socket server"
     from_port   = "4000"
     protocol    = "tcp"
@@ -40,7 +40,7 @@ resource "aws_security_group" "this" {
   }
 
   ingress {
-    security_groups = [local.lb_sg_id]
+    cidr_blocks = ["0.0.0.0/0"]
     description = "ingress security_group_rule for mongo"
     from_port   = "27017"
     protocol    = "tcp"
@@ -49,21 +49,12 @@ resource "aws_security_group" "this" {
   }
 
   ingress {
-    security_groups = [local.lb_sg_id]
+    cidr_blocks = ["0.0.0.0/0"]
     description = "ingress security_group_rule for adminer"
     from_port   = "8080"
     protocol    = "tcp"
     self        = "false"
     to_port     = "8080"
-  }
-
-  ingress {
-    security_groups = [local.bastion_sg_id]
-    description = "ingress security_group_rule for 22"
-    from_port   = "22"
-    protocol    = "tcp"
-    self        = "false"
-    to_port     = "22"
   }
 
   egress {
@@ -79,4 +70,3 @@ resource "aws_security_group" "this" {
     Name = local.config.security_group_name
   }
 }
-
