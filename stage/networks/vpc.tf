@@ -1,6 +1,6 @@
 locals {
   common_tags = {
-    Project = "humanizone"
+    Project = "humanizone-prod"
     Owner = "1000sang"
   }
 }

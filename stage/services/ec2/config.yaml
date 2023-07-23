@@ -1,0 +1,19 @@
+context:
+  ami: "ami-0c6e5afdd23291f73"
+
+ami: "ami-0c6e5afdd23291f73"
+
+instance_name: "humanizone-server"
+security_group_name: "humanizone-server-sg"
+key_name: "humani"
+
+remote_states:
+  "network":
+    organization: "humanizone"
+    workspace: "network"
+  "lb":
+    organization: "humanizone"
+    workspace: "lb"
+  "bastion":
+    organization: "humanizone"
+    workspace: "ec2-bastion"

@@ -1,0 +1,15 @@
+context:
+  organization: "humanizone"
+
+remote_states:
+  "ecr":
+    organization: "${organization}"
+    workspace: "ecr"
+
+  "lb":
+    organization: "${organization}"
+    workspace: "lb"
+
+  "network":
+    organization: "${organization}"
+    workspace: "network"

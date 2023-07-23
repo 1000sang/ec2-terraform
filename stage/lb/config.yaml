@@ -1,0 +1,17 @@
+context:
+  organization: "humanizone"
+  app_name: "humanizone"
+
+name: "${app_name}-lb"
+internal: false
+load_balancer_type: "application"
+enable_deletion_protection: false
+security_group_name: "${app_name}-lb-sg"
+
+remote_states:
+  "s3":
+    organization: "${organization}"
+    workspace: "s3"
+  "network":
+    organization: "${organization}"
+    workspace: "network"

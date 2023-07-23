@@ -1,0 +1,38 @@
+context:
+  organization: "humanizone"
+  container_name: "api"
+  container_port: 3000
+
+container:
+  name: "${container_name}"
+  port: "${container_port}"
+
+task:
+  port: 3000
+  family: "${organization}-${container_name}-template"
+  cpu: 256
+  memory: 512
+
+service:
+  name: "api"
+
+listner:
+  port: 3001
+  protocol: "HTTP"
+
+remote_states:
+  "ecr-nest":
+    organization: "${organization}"
+    workspace: "ecr-nest"
+
+  "lb":
+    organization: "${organization}"
+    workspace: "lb"
+
+  "network":
+    organization: "${organization}"
+    workspace: "network"
+
+  "ecs":
+    organization: "${organization}"
+    workspace: "ecs"

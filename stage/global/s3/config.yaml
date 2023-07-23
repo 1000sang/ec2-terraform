@@ -1,0 +1,7 @@
+context:
+  bucket: "humanizone-s3"
+
+remote_states:
+  "network":
+    organization: "humanizone"
+    workspace: "network"
